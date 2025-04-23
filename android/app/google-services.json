@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "297523483889",
+    "project_id": "daily-track-98f01",
+    "storage_bucket": "daily-track-98f01.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:297523483889:android:ab5d3164d43bc9a382c550",
+        "android_client_info": {
+          "package_name": "com.dev3mk.daily_track"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbvneIFuyzniOYfjhhPF9I2wqw5IYo3yY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
