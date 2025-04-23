@@ -1,16 +1,42 @@
-# daily_track
+# 📆 Daily Track
 
-A new Flutter project for tarcking daily routine.
+**Daily Track** is a Flutter productivity app built to help users organize and maintain their everyday routines. Whether you're building new habits or keeping track of existing ones, Daily Track gives you a clear structure and insightful statistics to stay consistent and focused.
 
-## Getting Started
+## 🚀 Features
 
-This project is a starting point for a Flutter application.
+### 🏠 Home Screen Overview
+- View all your routines in one place.  
+- See each routine’s:  
+  - ✅ Today's progress  
+  - 📊 Overall progress
+   
+     <img src="screen_shots/screenshot_home.png" alt="drawing" width="200" height="450" />
+       &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <img src="screen_shots/screenshot_delete_dialog.png" alt="drawing" width="200" height="450" />  
 
-A few resources to get you started if this is your first Flutter project:
+### ✅ Routine Management
+- Create daily routines to stay organized and focused.  
+- Each routine is made up of multiple tasks.  
+- Each task can also contain subtasks, giving you more control over your process.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+  <img src="screen_shots/screenshot_add_routine_screen.png" alt="drawing" width="200" height="450" />
+   &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="screen_shots/screenshot_task_routine_dialog.png" alt="drawing" width="200" height="450" />
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### 📅 Routine Screen
+- Mark tasks and subtasks as complete to track your day effectively.
+- Edit tasks with changing names or adding and removeing subtasks.
+
+  <img src="screen_shots/screenshot_routine.png" alt="drawing" width="200" height="450" />
+  &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="screen_shots/screenshot_edit_task.png" alt="drawing" width="200" height="450" />
+
+### 📈 Statistics
+- Analyze your **weekly performance** for each routine.  
+- See your **current streaks** to stay motivated.  
+- Identify your most completed tasks with the **Top Tasks** section.
+
+<img src="screen_shots/screenshot_stats.png" alt="drawing" width="200" height="450" />
+  
+
+
