@@ -30,7 +30,7 @@ class AddRoutineScreen extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.all(10).w,
+            padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 10.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -38,7 +38,7 @@ class AddRoutineScreen extends StatelessWidget {
                 SizedBox(height: 10.h,),
                 Card(
                   child: Container(
-                    padding: EdgeInsets.all(10.w),
+                    padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 10.w),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
