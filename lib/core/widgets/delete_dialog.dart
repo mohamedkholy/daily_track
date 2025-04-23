@@ -16,6 +16,7 @@ showDeleteDialog({
   Alert(
     context: context,
     style: AlertStyle(
+      backgroundColor: Colors.white,
       isCloseButton: false,
       descStyle: TextStyles.font16BlackRegular,
       titleStyle: TextStyles.font18BlackBold,

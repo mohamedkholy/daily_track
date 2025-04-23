@@ -35,8 +35,8 @@ class AddRoutineScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 BackButtonWithTitle("Create New Routine"),
+                SizedBox(height: 10.h,),
                 Card(
-                  color: Colors.white,
                   child: Container(
                     padding: EdgeInsets.all(10.w),
                     child: Column(

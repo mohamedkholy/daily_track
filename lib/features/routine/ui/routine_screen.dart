@@ -55,6 +55,7 @@ class _RoutineScreenState extends State<RoutineScreen> {
               BackButtonWithTitle(widget.routine.title),
               SizedBox(height: 20.h),
               ChangeDateLayout(routine: widget.routine),
+              SizedBox(height: 5.h),
               BlocConsumer<RoutineCubit, RoutineState>(
                 listener: (context, state) {
                   if (state is UpdateSubtaskTitleFailed) {
@@ -62,8 +63,7 @@ class _RoutineScreenState extends State<RoutineScreen> {
                       message: "updating subtask title failed",
                       context: context,
                     );
-                  }
-                  else if(state is UpdateTaskTitleFailed){
+                  } else if (state is UpdateTaskTitleFailed) {
                     floatingSnackBar(
                       message: "updating task title failed",
                       context: context,
@@ -76,47 +76,45 @@ class _RoutineScreenState extends State<RoutineScreen> {
                       child: CircularProgressIndicator(color: Colors.black),
                     );
                   }
-                    return Expanded(
-                      child: Column(
-                        children: [
-                          DayProgress(state.tasks),
-                          Expanded(
-                            child: ListView(
-                              children: [
-                                ...List.generate(
-                                  state.tasks.length,
-                                  (index) => DeleteEditMenu(
-                                    item: state.tasks[index],
-                                    onOkPressed: () {
-                                      buildContext
-                                          .read<RoutineCubit>()
-                                          .deleteTask(
-                                            state.tasks[index],
-                                            widget.routine.title,
-                                          );
-                                    },
-                                    onTaskSaved: (Task newTask) {
-                                      buildContext
-                                          .read<RoutineCubit>()
-                                          .updateTask(
-                                            state.tasks[index],
-                                            newTask,
-                                            widget.routine.title,
-                                          );
-                                    },
-                                    child: TaskItem(
-                                      task: state.tasks[index],
-                                      routineTitle: widget.routine.title,
-                                    ),
+                  return Expanded(
+                    child: Column(
+                      children: [
+                        DayProgress(state.tasks),
+                        SizedBox(height: 5.h),
+                        Expanded(
+                          child: ListView.builder(
+                            itemCount: state.tasks.length,
+                            itemBuilder:
+                                (context, index) => DeleteEditMenu(
+                                  item: state.tasks[index],
+                                  onOkPressed: () {
+                                    buildContext
+                                        .read<RoutineCubit>()
+                                        .deleteTask(
+                                          state.tasks[index],
+                                          widget.routine.title,
+                                        );
+                                  },
+                                  onTaskSaved: (Task newTask) {
+                                    buildContext
+                                        .read<RoutineCubit>()
+                                        .updateTask(
+                                          state.tasks[index],
+                                          newTask,
+                                          widget.routine.title,
+                                        );
+                                  },
+                                  child: TaskItem(
+                                    task: state.tasks[index],
+                                    routineTitle: widget.routine.title,
                                   ),
                                 ),
-                              ],
-                            ),
                           ),
-                        ],
-                      ),
-                    );
-                  },
+                        ),
+                      ],
+                    ),
+                  );
+                },
               ),
             ],
           ),

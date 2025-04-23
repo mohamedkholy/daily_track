@@ -117,6 +117,7 @@ class _AddTaskDialogState extends State<AddTaskDialog> {
                   controller: subTaskTitleController,
                 ),
               ),
+              SizedBox(height: 5.h,),
               InkWell(
                 onTap: () {
                   String subTaskTitle = subTaskTitleController.text;

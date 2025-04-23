@@ -31,22 +31,29 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        print(constraints.maxWidth);
         return ScreenUtilInit(
-          designSize: constraints.maxWidth>600?Size(constraints.maxWidth, constraints.maxHeight) : Size(430, 900),
+          designSize:
+              constraints.maxWidth > 600
+                  ? Size(constraints.maxWidth, constraints.maxHeight)
+                  : Size(430, 900),
           minTextAdapt: true,
           child: MaterialApp(
             initialRoute: Routes.mainScreen,
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
-              cardTheme: CardTheme(elevation: 2),
+              dividerColor: Colors.transparent,
+              scaffoldBackgroundColor: Colors.grey[50],
+              bottomNavigationBarTheme: BottomNavigationBarThemeData(
+                backgroundColor: Colors.white,
+              ),
+              cardTheme: CardTheme(elevation: 2,color: Colors.white,),
               primaryColor: Colors.black,
               fontFamily: "montserrat_regular",
             ),
             onGenerateRoute: AppRouter().generateRoute,
           ),
         );
-      }
+      },
     );
   }
 }

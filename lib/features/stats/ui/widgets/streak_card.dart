@@ -9,7 +9,6 @@ class StreakCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.white,
       child: Container(
         width: double.infinity,
         padding: EdgeInsets.all(10),

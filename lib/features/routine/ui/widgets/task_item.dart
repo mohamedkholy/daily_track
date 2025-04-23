@@ -19,9 +19,9 @@ class TaskItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.white,
       child: ExpansionTile(
         childrenPadding: EdgeInsetsDirectional.only(start: 30.w, bottom: 10.h),
+
         expandedAlignment: Alignment.topLeft,
         title: TaskMenuTitle(task: task, routineTitle: routineTitle),
         children: [

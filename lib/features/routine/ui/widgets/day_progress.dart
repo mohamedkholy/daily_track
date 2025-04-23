@@ -15,7 +15,6 @@ class DayProgress extends StatelessWidget {
     final dayProgress =completeTasks/(tasks.isEmpty?1:tasks.length);
     context.read<RoutineCubit>().saveDayProgress(dayProgress);
     return Card(
-      color: Colors.white,
       child: Container(
         padding: EdgeInsets.all(10.w),
         child: Column(

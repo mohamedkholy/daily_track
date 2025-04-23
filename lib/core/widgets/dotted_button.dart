@@ -14,6 +14,7 @@ class DottedButton extends StatelessWidget {
       borderType: BorderType.RRect,
       radius: Radius.circular(20.w),
       child: Container(
+        padding: EdgeInsets.symmetric(vertical: 5.h,horizontal: 5.w),
         width: double.infinity,
         alignment: Alignment.center,
         child: Text(title, style: TextStyles.font18BlackRegular),

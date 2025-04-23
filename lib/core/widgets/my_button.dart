@@ -14,7 +14,7 @@ class MyButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: width?? double.infinity,
-      margin: EdgeInsets.only(top: 20.h,bottom: 50.h),
+      margin: EdgeInsets.only(top: 20.h,bottom: 30.h),
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(

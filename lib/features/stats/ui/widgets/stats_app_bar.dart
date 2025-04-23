@@ -9,7 +9,6 @@ class StatsAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.white,
       child: Container(
         padding: EdgeInsets.all(10.0.w),
         width: double.infinity,

@@ -31,6 +31,7 @@
 
 # Android related
 *.jks
+**/android/app/google-services.json
 **/android/**/gradle-wrapper.jar
 **/android/.gradle
 **/android/captures/

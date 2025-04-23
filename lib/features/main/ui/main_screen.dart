@@ -16,7 +16,7 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _pageController = PageController();
+    final pageController = PageController();
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         onTap: (index) => context.read<MainCubit>().setScreenIndex(index),
@@ -36,11 +36,11 @@ class MainScreen extends StatelessWidget {
       body: SafeArea(
         child: BlocConsumer<MainCubit, int>(
           listener: (context, state) =>
-            _pageController.animateToPage(state, duration: .5.seconds, curve: Curves.linear)
+            pageController.animateToPage(state, duration: .5.seconds, curve: Curves.linear)
           ,
           builder:
               (context, state) => PageView.builder(
-                controller: _pageController,
+                controller: pageController,
                 onPageChanged: (index) => context.read<MainCubit>().setScreenIndex(index),
                 itemCount: 2,
                 itemBuilder: (context, index) {

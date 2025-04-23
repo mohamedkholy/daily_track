@@ -12,7 +12,6 @@ class BackButtonWithTitle extends StatelessWidget {
     return GestureDetector(
       onTap: () => Navigator.of(context).pop(),
       child: Card(
-        color: Colors.white,
         child: Container(
           padding: EdgeInsets.all(10.w),
           child: Row(

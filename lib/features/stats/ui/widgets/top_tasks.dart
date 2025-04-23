@@ -13,7 +13,6 @@ class TopTasks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.white,
       child: Container(
         margin: EdgeInsets.all(10),
         child: BlocBuilder<StatsCubit, StatsState>(

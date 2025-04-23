@@ -17,7 +17,6 @@ class LastWeekStats extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.white,
       child: Container(
         margin: EdgeInsetsDirectional.only(top: 10.w),
         child: Column(
