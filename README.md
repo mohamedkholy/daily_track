@@ -37,6 +37,9 @@
 - Identify your most completed tasks with the **Top Tasks** section.
 
 <img src="screen_shots/screenshot_stats.png" alt="drawing" width="200" height="450" />
+
+## 📥 APK
+📥 Download Demo APK: [Google Drive Link](https://drive.google.com/drive/folders/1z6MiZyZ5qOxR1x8a4MnZnxkoE_LyC0CW?usp=drive_link)
   
 
 
