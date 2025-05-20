@@ -34,8 +34,8 @@ class DeleteEditMenu extends StatelessWidget {
             details.globalPosition.dy + 1,
           ),
           items: [
-            PopupMenuItem(value: "edit", child: Text("Edit")),
-            PopupMenuItem(value: "delete", child: Text("Delete")),
+            const PopupMenuItem(value: "edit", child: Text("Edit")),
+            const PopupMenuItem(value: "delete", child: Text("Delete")),
           ],
         );
 

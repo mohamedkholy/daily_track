@@ -97,7 +97,7 @@ class _AddTaskDialogState extends State<AddTaskDialog> {
                           subTasks.removeAt(index);
                           setState(() {});
                         },
-                        child: Icon(Icons.clear, size: 18),
+                        child: const Icon(Icons.clear, size: 18),
                       ),
                     ],
                   ),
@@ -133,7 +133,7 @@ class _AddTaskDialogState extends State<AddTaskDialog> {
                     setState(() {});
                   }
                 },
-                child: DottedButton("+ Add subtask"),
+                child: const DottedButton("+ Add subtask"),
               ),
               MyButton(
                 title: "Save Task",

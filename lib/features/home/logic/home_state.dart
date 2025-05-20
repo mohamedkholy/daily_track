@@ -13,6 +13,10 @@ class Loaded extends HomeState{
   Loaded(super.routines);
 }
 
+class NoRoutines extends HomeState{
+  NoRoutines(super.routines);
+}
+
 class UpdateRoutineTitleFailed extends HomeState{
   UpdateRoutineTitleFailed(super.routines);
 }

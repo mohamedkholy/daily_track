@@ -34,7 +34,7 @@ class AddRoutineScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                BackButtonWithTitle("Create New Routine"),
+                const BackButtonWithTitle("Create New Routine"),
                 SizedBox(height: 10.h,),
                 Card(
                   child: Container(
@@ -53,10 +53,8 @@ class AddRoutineScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Text("Color", style: TextStyles.font18BlackBold),
-                        ColorsRow(),
                         Container(
-                          margin: EdgeInsets.symmetric(vertical: 10.h),
+                          margin: EdgeInsets.only(bottom: 10.h),
                           child: Text(
                             "Tasks",
                             style: TextStyles.font18BlackBold,
@@ -107,7 +105,7 @@ class AddRoutineScreen extends StatelessWidget {
                             }
                             return ListView(
                               shrinkWrap: true,
-                              physics: NeverScrollableScrollPhysics(),
+                              physics: const NeverScrollableScrollPhysics(),
                               children: [
                                 ...List.generate(
                                   tasks.length,
@@ -117,7 +115,7 @@ class AddRoutineScreen extends StatelessWidget {
                             );
                           },
                         ),
-                        AddTaskButton(),
+                        const AddTaskButton(),
                         MyButton(
                           title: "Save routine",
                           onPressed: () {

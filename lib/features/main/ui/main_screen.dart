@@ -47,12 +47,12 @@ class MainScreen extends StatelessWidget {
                   if (index == 0) {
                     return BlocProvider(
                       create: (context) => getIt<HomeCubit>(),
-                      child: HomeScreen(),
+                      child: const HomeScreen(),
                     );
                   } else {
                     return BlocProvider(
                       create: (context) => getIt<StatsCubit>(),
-                      child: StatsScreen(),
+                      child: const StatsScreen(),
                     );
                   }
                 },

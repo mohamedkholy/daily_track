@@ -14,8 +14,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -34,26 +32,26 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-        return SingleChildScrollView(
-          child: Container(
-            margin: EdgeInsets.symmetric(horizontal: 10.0.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                HomeAppBar(),
-                SizedBox(height: 15.h),
-                AddRoutineButton(),
-                SizedBox(height: 15.h),
-                Padding(
-                  padding: EdgeInsetsDirectional.only(start: 10.0.w),
-                  child: Text(
-                    "Your Routines",
-                    style: TextStyles.font18WhiteBold.copyWith(
-                      color: Colors.black,
-                    ),
+        return Container(
+          margin: EdgeInsets.symmetric(horizontal: 10.0.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const HomeAppBar(),
+              SizedBox(height: 15.h),
+              const AddRoutineButton(),
+              SizedBox(height: 15.h),
+              Padding(
+                padding: EdgeInsetsDirectional.only(start: 10.0.w),
+                child: Text(
+                  "Your Routines",
+                  style: TextStyles.font18WhiteBold.copyWith(
+                    color: Colors.black,
                   ),
                 ),
-                BlocConsumer<HomeCubit, HomeState>(
+              ),
+              Expanded(
+                child: BlocConsumer<HomeCubit, HomeState>(
                   listener: (context, state) {
                     if(state is UpdateRoutineTitleFailed){
                       floatingSnackBar(
@@ -64,13 +62,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                   builder: (context, state) {
                     if (state is Loading) {
-                      return Center(
+                      return const Center(
                         child: CircularProgressIndicator(color: Colors.black),
                       );
                     }
+                    else if(state is NoRoutines){
+                      return const Center(child: Text("No routines yet"),);
+                    }
                     return ListView(
                       shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       children: [
                         ...List.generate(
                           state.routines.length,
@@ -94,8 +95,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     );
                   },
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         );
   }

@@ -34,7 +34,7 @@ class EditTitleDialog extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  margin: EdgeInsets.only(bottom: 20),
+                  margin: const EdgeInsets.only(bottom: 20),
                   child: Text("Edit Title", style: TextStyles.font18BlackBold),
                 ),
                 Form(

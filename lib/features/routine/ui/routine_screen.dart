@@ -45,7 +45,7 @@ class _RoutineScreenState extends State<RoutineScreen> {
           );
         },
         backgroundColor: Colors.black,
-        child: Icon(Icons.add, color: Colors.white),
+        child: const Icon(Icons.add, color: Colors.white),
       ),
       body: SafeArea(
         child: Container(
@@ -72,7 +72,7 @@ class _RoutineScreenState extends State<RoutineScreen> {
                 },
                 builder: (context, state) {
                   if (state is LoadingTasks) {
-                    return Center(
+                    return const Center(
                       child: CircularProgressIndicator(color: Colors.black),
                     );
                   }

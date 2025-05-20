@@ -1,5 +1,4 @@
 import 'package:daily_track/features/stats/data/model/day_progress.dart';
-import 'package:daily_track/features/stats/data/model/routine_progress.dart';
 import 'package:daily_track/features/stats/logic/states_cubit.dart';
 import 'package:daily_track/features/stats/logic/stats_state.dart';
 import 'package:daily_track/features/stats/ui/widgets/last_week_stats.dart';
@@ -40,7 +39,7 @@ class _StatsScreenState extends State<StatsScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            StatsAppBar(),
+            const StatsAppBar(),
             SizedBox(height: 15.h),
             BlocConsumer<StatsCubit, StatsState>(
               listener: (context, state) {
@@ -53,7 +52,7 @@ class _StatsScreenState extends State<StatsScreen> {
               },
               builder: (context, state) {
                 if (state is LoadingState) {
-                  return Column(children: [LastWeekStats([]), StreakCard(0)]);
+                  return const Column(children: [LastWeekStats([]), StreakCard(0)]);
                 } else if (state is LoadedState) {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -95,7 +94,7 @@ class _StatsScreenState extends State<StatsScreen> {
                           ),
                       LastWeekStats(list),
                       state.routineProgress.isEmpty
-                          ? StreakCard(0)
+                          ? const StreakCard(0)
                           : StreakCard(state.streaks[selectedValue]!),
                       if (state.routineProgress.isNotEmpty)
                         TopTasks(routineTitle: selectedValue),

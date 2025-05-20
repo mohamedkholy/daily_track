@@ -17,7 +17,12 @@ class HomeCubit extends Cubit<HomeState> {
   getRoutines() async {
     emit(Loading());
     (await _repo.getAllRoutines()).listen((routines) {
-      emit(Loaded(routines));
+      if(routines.isNotEmpty) {
+        emit(Loaded(routines));
+      }
+      else{
+        emit(NoRoutines(routines));
+      }
     });
   }
 
