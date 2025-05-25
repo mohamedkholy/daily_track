@@ -19,19 +19,19 @@ class RoutineCubit extends Cubit<RoutineState> {
 
   RoutineCubit(this.repo) : super(LoadingTasks());
 
-  getTasks() async {
+  Future<void> getTasks() async {
     routineData = await repo.getRoutineData(routine.title);
     updateTasks(date);
   }
 
-  updateTasks(DateTime date) {
+  void updateTasks(DateTime date) {
     this.date = date;
     _tasksStreamSubscription?.cancel();
     _tasksStreamSubscription = repo.getTasks(routine.title, date).listen((
       tasks,
     ) async {
       for (int i = 0; i < routineData.length; i++) {
-        var index = tasks.indexWhere(
+        final index = tasks.indexWhere(
           (element) => element.title == routineData[i].title,
         );
         if (index != -1) {
@@ -53,11 +53,11 @@ class RoutineCubit extends Cubit<RoutineState> {
         startDate.isAtSameMomentAs(currentDate);
   }
 
-  saveTaskState(Task task, bool? state) {
+  void saveTaskState(Task task, bool? state) {
     repo.upsertTask(task.copyWith(date: date), routine.title, state);
   }
 
-  saveSubtaskState(Subtask subtask, String taskTitle, bool? state) {
+  void saveSubtaskState(Subtask subtask, String taskTitle, bool? state) {
     repo.upsertSubtask(
       subtask.copyWith(date: date),
       taskTitle,
@@ -66,7 +66,7 @@ class RoutineCubit extends Cubit<RoutineState> {
     );
   }
 
-  addTask(Task task, String routineTitle) async {
+  Future<void> addTask(Task task, String routineTitle) async {
     await repo.addTask(task, routineTitle);
   }
 
@@ -76,11 +76,11 @@ class RoutineCubit extends Cubit<RoutineState> {
     return super.close();
   }
 
-  saveDayProgress(double dayProgress) {
+  void saveDayProgress(double dayProgress) {
     repo.saveDayProgress(dayProgress, date, routine.title);
   }
 
-  deleteTask(Task task, String routineTitle) async {
+  Future<void> deleteTask(Task task, String routineTitle) async {
     await updateAllProgresses(task, routineTitle);
     await repo.deleteTask(task.title, routineTitle);
     getTasks();
@@ -96,18 +96,18 @@ class RoutineCubit extends Cubit<RoutineState> {
   }
 
   updateAllProgresses(Task task, String routineTitle) async {
-    var taskPercentage =
+    final taskPercentage =
         1 /
         routineData
             .where(
               (element) => isDateStartBefore(element.startDate, task.startDate),
             )
             .length;
-    int days = daysUntilToday(task.startDate);
+    final int days = daysUntilToday(task.startDate);
     for (int i = 0; i <= days; i++) {
-      var day =
+      final day =
         task.startDate.add(Duration(days: i));
-      double percentage =
+      final double percentage =
           await repo.getTaskState(task.title, routineTitle, day)
               ? taskPercentage
               : 0;
@@ -120,7 +120,7 @@ class RoutineCubit extends Cubit<RoutineState> {
     }
   }
 
-  updateSubtaskTitle(
+  Future<void> updateSubtaskTitle(
     String title,
     String taskTitle,
     String routineTitle,
@@ -136,12 +136,12 @@ class RoutineCubit extends Cubit<RoutineState> {
 
   void updateTask(Task oldTask, Task newTask, String routineTitle) async {
     if (oldTask.isDone == null) {
-      await repo.upsertTask(oldTask.copyWith(date: date), routineTitle);
+       repo.upsertTask(oldTask.copyWith(date: date), routineTitle);
     }
-    var removedTasks = oldTask.subTasks.toSet().difference(
+    final removedTasks = oldTask.subTasks.toSet().difference(
       newTask.subTasks.toSet(),
     );
-    var addedTasks = newTask.subTasks.toSet().difference(
+    final addedTasks = newTask.subTasks.toSet().difference(
       oldTask.subTasks.toSet(),
     );
 

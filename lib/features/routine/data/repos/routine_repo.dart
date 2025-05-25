@@ -8,12 +8,12 @@ import 'package:drift/drift.dart';
 import 'package:flutter/material.dart';
 
 class RoutineRepo {
-  MyDatabase _db;
+  final MyDatabase _db;
 
   RoutineRepo(this._db);
 
   Future<List<task_model.Task>> getRoutineData(String routineTitle) async {
-    var table = _db.tasks;
+    final table = _db.tasks;
     final tasks =
         await (_db.selectOnly(table, distinct: true)
               ..addColumns([table.title, table.startDate])
@@ -37,7 +37,7 @@ class RoutineRepo {
     String taskTitle,
     String routineTitle,
   ) async {
-    List<String> subtasksTitles =
+    final List<String> subtasksTitles =
         await (_db.selectOnly(_db.subtasks, distinct: true)
               ..addColumns([_db.subtasks.title])
               ..where(
@@ -63,7 +63,7 @@ class RoutineRepo {
         )).watch();
 
     return taskStream.asyncMap((tasks) async {
-      List<task_model.Task> tasksList = [];
+      final List<task_model.Task> tasksList = [];
       for (var task in tasks) {
         tasksList.add(
           task_model.Task(
@@ -85,7 +85,7 @@ class RoutineRepo {
     DateTime date,
     String routineTitle,
   ) async {
-    List<Subtask> subtasks =
+    final List<Subtask> subtasks =
         await (_db.select(_db.subtasks)..where(
           (e) =>
               e.task.equals(taskTitle) &
@@ -101,8 +101,8 @@ class RoutineRepo {
     ).toList();
   }
 
-  upsertTask(task_model.Task task, String routineTitle, [bool? state]) {
-    var taskCompanion = TasksCompanion(
+  void upsertTask(task_model.Task task, String routineTitle, [bool? state]) {
+    final taskCompanion = TasksCompanion(
       title: Value(task.title),
       routine: Value(routineTitle),
       startDate: Value(task.startDate),
@@ -112,7 +112,7 @@ class RoutineRepo {
     _upsertTask(taskCompanion, task.subTasks);
   }
 
-  _upsertTask(TasksCompanion task, List<subtask_model.Subtask> subTasks) async {
+  Future<void> _upsertTask(TasksCompanion task, List<subtask_model.Subtask> subTasks) async {
     await _db
         .into(_db.tasks)
         .insert(
@@ -144,7 +144,6 @@ class RoutineRepo {
             date: Value(task.date),
             startDate: Value(task.startDate),
             routine: Value(routineTitle),
-            isDone: Value.absent(),
           ),
         );
     for (subtask_model.Subtask subtask in task.subTasks) {
@@ -152,12 +151,11 @@ class RoutineRepo {
         subtask.copyWith(date: date),
         task.title,
         routineTitle,
-        null,
       );
     }
   }
 
-  upsertSubtask(
+  Future<void> upsertSubtask(
     subtask_model.Subtask subtask,
     String taskTitle,
     String routineTitle,
@@ -173,7 +171,7 @@ class RoutineRepo {
     await _upsertSubtask(subtasksCompanion);
   }
 
-  _upsertSubtask(SubtasksCompanion subtask) async {
+  Future<void> _upsertSubtask(SubtasksCompanion subtask) async {
     await _db
         .into(_db.subtasks)
         .insert(
@@ -184,7 +182,7 @@ class RoutineRepo {
         );
   }
 
-  saveDayProgress(double dayProgress, DateTime date, String routineTitle) {
+  void saveDayProgress(double dayProgress, DateTime date, String routineTitle) {
     _db
         .into(_db.routineProgress)
         .insert(
@@ -199,13 +197,13 @@ class RoutineRepo {
         );
   }
 
-  deleteTask(String title, String routineTitle) async {
+  Future<void> deleteTask(String title, String routineTitle) async {
     await (_db.delete(_db.tasks)..where(
       (tbl) => tbl.title.equals(title) & tbl.routine.equals(routineTitle),
     )).go();
   }
 
-  deleteSubtask(String title, String taskTitle, String routineTitle) async {
+  Future<void> deleteSubtask(String title, String taskTitle, String routineTitle) async {
     await (_db.delete(_db.subtasks)..where(
       (tbl) =>
           tbl.title.equals(title) &
@@ -214,7 +212,7 @@ class RoutineRepo {
     )).go();
   }
 
-  changeDayProgress(
+  Future<void> changeDayProgress(
     DateTime day,
     double taskPercentage,
     String routineTitle,
@@ -237,8 +235,8 @@ class RoutineRepo {
     String routineTitle,
     DateTime day,
   ) async {
-    var tasksTable = _db.tasks;
-    var result =
+    final tasksTable = _db.tasks;
+    final result =
         await (_db.selectOnly(tasksTable)
               ..addColumns([tasksTable.isDone])
               ..where(
@@ -255,7 +253,7 @@ class RoutineRepo {
         : false;
   }
 
-  updateSubtaskTitle(
+  Future<void> updateSubtaskTitle(
     String title,
     String taskTitle,
     String routineTitle,
@@ -269,7 +267,7 @@ class RoutineRepo {
     )).write(SubtasksCompanion(title: Value(newTitle)));
   }
 
-  updateTaskTitle(String oldTitle, String newTitle, String routineTitle) async {
+  Future<void> updateTaskTitle(String oldTitle, String newTitle, String routineTitle) async {
     await (_db.update(_db.tasks)..where(
       (tbl) => tbl.title.equals(oldTitle) & tbl.routine.equals(routineTitle),
     )).write(TasksCompanion(title: Value(newTitle)));

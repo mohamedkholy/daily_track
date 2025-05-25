@@ -52,53 +52,67 @@ class _StatsScreenState extends State<StatsScreen> {
               },
               builder: (context, state) {
                 if (state is LoadingState) {
-                  return const Column(children: [LastWeekStats([]), StreakCard(0)]);
+                  return const Column(
+                    children: [LastWeekStats([]), StreakCard(0)],
+                  );
+                } else if (state is NoRoutinesState) {
+                  return Center(
+                    child: Text(
+                      "No routines yet",
+                      style: TextStyles.font14BlackRegular,
+                    ),
+                  );
                 } else if (state is LoadedState) {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      state.routineProgress.isEmpty
-                          ? Container()
-                          : Align(
-                            alignment: Alignment.topRight,
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text("Routine:  ",style: TextStyles.font18BlackBold,),
-                                DropdownButton(
-                                  underline: Container(),
-                                  value: selectedValue,
-                                  items:
-                                  state.routineProgress
-                                      .map(
-                                        (e) => DropdownMenuItem(
-                                      value: e.routineTitle,
-                                      child: Text(e.routineTitle),
+                    children:
+                        [
+                          state.routineProgress.isEmpty
+                              ? Container()
+                              : Align(
+                                alignment: Alignment.topRight,
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      "Routine:  ",
+                                      style: TextStyles.font18BlackBold,
                                     ),
-                                  )
-                                      .toList(),
-                                  onChanged: (value) {
-                                    setState(() {
-                                      selectedValue = value.toString();
-                                      list =
+                                    DropdownButton(
+                                      underline: Container(),
+                                      value: selectedValue,
+                                      items:
                                           state.routineProgress
-                                              .firstWhere(
-                                                (e) => e.routineTitle == value,
-                                          )
-                                              .daysProgresses;
-                                    });
-                                  },
-                                )
-                              ],
-                            ),
-                          ),
-                      LastWeekStats(list),
-                      state.routineProgress.isEmpty
-                          ? const StreakCard(0)
-                          : StreakCard(state.streaks[selectedValue]!),
-                      if (state.routineProgress.isNotEmpty)
-                        TopTasks(routineTitle: selectedValue),
-                    ].animate(interval: .1.seconds).fadeIn().slideX(),
+                                              .map(
+                                                (e) => DropdownMenuItem(
+                                                  value: e.routineTitle,
+                                                  child: Text(e.routineTitle),
+                                                ),
+                                              )
+                                              .toList(),
+                                      onChanged: (value) {
+                                        setState(() {
+                                          selectedValue = value.toString();
+                                          list =
+                                              state.routineProgress
+                                                  .firstWhere(
+                                                    (e) =>
+                                                        e.routineTitle == value,
+                                                  )
+                                                  .daysProgresses;
+                                        });
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ),
+                          LastWeekStats(list),
+                          state.routineProgress.isEmpty
+                              ? const StreakCard(0)
+                              : StreakCard(state.streaks[selectedValue]!),
+                          if (state.routineProgress.isNotEmpty)
+                            TopTasks(routineTitle: selectedValue),
+                        ].animate(interval: .1.seconds).fadeIn().slideX(),
                   );
                 }
                 return Container();

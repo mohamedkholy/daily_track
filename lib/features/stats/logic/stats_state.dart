@@ -6,6 +6,8 @@ sealed class StatsState {}
 
 class LoadingState extends StatsState {}
 
+class NoRoutinesState extends StatsState {}
+
 class LoadedState extends StatsState {
   final List<RoutineProgress> routineProgress;
   final Map<String, List<TaskProgress>> topTasks;

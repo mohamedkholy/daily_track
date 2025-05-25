@@ -1,12 +1,9 @@
-import 'package:daily_track/core/di/dependency_injection.dart';
-import 'package:daily_track/core/helpers/date_formater.dart';
 import 'package:daily_track/core/themes/styles.dart';
 import 'package:daily_track/core/widgets/back_button.dart';
 import 'package:daily_track/core/widgets/my_text_form_field.dart';
 import 'package:daily_track/features/add_routine/logic/add_routine_cubit.dart';
 import 'package:daily_track/features/add_routine/logic/add_routine_state.dart';
 import 'package:daily_track/features/add_routine/ui/widgets/add_task_button.dart';
-import 'package:daily_track/features/add_routine/ui/widgets/colors_row.dart';
 import 'package:daily_track/core/widgets/my_button.dart';
 import 'package:daily_track/features/add_routine/ui/widgets/task_item.dart';
 import 'package:daily_track/features/routine/data/models/routine.dart';

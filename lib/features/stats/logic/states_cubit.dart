@@ -11,10 +11,14 @@ class StatsCubit extends Cubit<StatsState> {
 
   StatsCubit(this._repo) : super(LoadingState());
 
-  getData() async {
-    var data = await _repo.getRoutinesLastWeekProgress();
-    Map<String, int> streaks = {};
-    var list =
+  Future<void> getData() async {
+    final data = await _repo.getRoutinesLastWeekProgress();
+    if(data.isEmpty){
+      emit(NoRoutinesState());
+      return;
+    }
+    final Map<String, int> streaks = {};
+    final list =
         data.entries.map((e) {
           for (int i = 0; i < 8; i++) {
             var date = DateTime.now().subtract(Duration(days: i));
@@ -47,7 +51,7 @@ class StatsCubit extends Cubit<StatsState> {
     final topTasks = Map.fromEntries(topTasksList);
 
 
-    var lastWeekProgress =
+    final lastWeekProgress =
         list.length > 7 ? list.sublist(list.length - 7) : list;
 
     emit(
