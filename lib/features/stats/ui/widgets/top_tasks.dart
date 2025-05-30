@@ -14,7 +14,7 @@ class TopTasks extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Container(
-        margin: EdgeInsets.all(10),
+        margin: const EdgeInsets.all(10),
         child: BlocBuilder<StatsCubit, StatsState>(
           buildWhen: (previous, current) => current is LoadedState,
           builder: (context, state) {
@@ -23,7 +23,7 @@ class TopTasks extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text("Top Tasks", style: TextStyles.font16BlackBold),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   ...List.generate(
                     state.topTasks[routineTitle]!.length,
                     (index) => Row(
@@ -36,7 +36,7 @@ class TopTasks extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
-                        SizedBox(width: 10),
+                        const SizedBox(width: 10),
                         Expanded(
                           child: LinearProgressIndicator(
                             minHeight: 10.h,
@@ -47,7 +47,7 @@ class TopTasks extends StatelessWidget {
                                 state.topTasks[routineTitle]![index].progress,
                           ),
                         ),
-                        SizedBox(width: 10),
+                        const SizedBox(width: 10),
                         Text(
                           "${(state.topTasks[routineTitle]![index].progress * 100).ceil()}%",
                           style: TextStyles.font12BlackRegular,

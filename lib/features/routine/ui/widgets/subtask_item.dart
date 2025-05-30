@@ -27,6 +27,7 @@ class SubtaskItem extends StatelessWidget {
       child: Row(
         children: [
           PopupMenuButton<String>(
+            color: Colors.grey[100],
             child: Icon(
               subtask.isDone == null
                   ? Icons.circle_outlined
@@ -60,9 +61,9 @@ class SubtaskItem extends StatelessWidget {
             },
             itemBuilder:
                 (BuildContext context) => [
-                  PopupMenuItem(value: "Done", child: Text("Done")),
-                  PopupMenuItem(value: "Fail", child: Text("Fail")),
-                  PopupMenuItem(value: "Not yet", child: Text("Not yet")),
+                  const PopupMenuItem(value: "Done", child: Text("Done")),
+                  const PopupMenuItem(value: "Fail", child: Text("Fail")),
+                  const PopupMenuItem(value: "Not yet", child: Text("Not yet")),
                 ],
           ),
           Container(

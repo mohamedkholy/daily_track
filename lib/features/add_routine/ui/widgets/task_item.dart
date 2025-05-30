@@ -14,8 +14,8 @@ class TaskItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10).w,
-      margin: EdgeInsets.all(10).w,
+      padding: const EdgeInsets.all(10).w,
+      margin: const EdgeInsets.all(10).w,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.r),
         color: Colors.grey[200],
@@ -32,7 +32,7 @@ class TaskItem extends StatelessWidget {
                   margin: EdgeInsetsDirectional.only(start: 10.w),
                   child: ListView(
                     shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     children: [
                       ...List.generate(task.subTasks.length, (index) {
                         return Text(

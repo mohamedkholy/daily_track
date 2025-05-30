@@ -1,14 +1,10 @@
-import 'package:daily_track/core/helpers/font_weight_helper.dart';
-import 'package:daily_track/core/themes/colors.dart';
 import 'package:daily_track/core/themes/styles.dart';
-import 'package:daily_track/core/widgets/delete_dialog.dart';
 import 'package:daily_track/core/widgets/delete_edit_menu.dart';
 import 'package:daily_track/features/home/logic/home_cubit.dart';
 import 'package:daily_track/features/home/logic/home_state.dart';
 import 'package:daily_track/features/home/ui/widgets/add_routine_button.dart';
 import 'package:daily_track/features/home/ui/widgets/app_bar.dart';
 import 'package:daily_track/features/home/ui/widgets/routine_item.dart';
-import 'package:daily_track/features/routine/data/models/routine.dart';
 import 'package:floating_snackbar/floating_snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';

@@ -18,8 +18,8 @@ class MainBottomNavigation extends StatelessWidget {
       selectedFontSize: 15.sp,
       selectedLabelStyle: TextStyles.font18BlackBold,
       items: [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-        BottomNavigationBarItem(icon: Icon(Icons.query_stats), label: "Stats"),
+        const BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+        const BottomNavigationBarItem(icon: Icon(Icons.query_stats), label: "Stats"),
       ],
     );
   }

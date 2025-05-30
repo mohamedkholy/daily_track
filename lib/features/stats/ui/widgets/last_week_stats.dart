@@ -25,7 +25,7 @@ class LastWeekStats extends StatelessWidget {
             Padding(
               padding: EdgeInsetsDirectional.only(start: 10.w,bottom: 10.h),
               child: Text(
-                "Last Week Performance",
+                "Week Performance",
                 style: TextStyles.font18BlackBold,
               ),
             ),
@@ -42,7 +42,7 @@ class LastWeekStats extends StatelessWidget {
                             DateUtils.dateOnly(item.date),
                     yValueMapper:
                         (DayProgress item, index) => (item.progress * 100),
-                    markerSettings: MarkerSettings(isVisible: true),
+                    markerSettings: const MarkerSettings(isVisible: true),
                   ),
                 ],
                 primaryXAxis: DateTimeAxis(

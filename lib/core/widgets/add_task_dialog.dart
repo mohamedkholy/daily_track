@@ -120,7 +120,7 @@ class _AddTaskDialogState extends State<AddTaskDialog> {
               SizedBox(height: 5.h,),
               InkWell(
                 onTap: () {
-                  String subTaskTitle = subTaskTitleController.text;
+                  final String subTaskTitle = subTaskTitleController.text;
                     if (subTaskTitle.isNotEmpty&&subtaskTitleKey.currentState!.validate()) {
                     subTasks.add(
                       Subtask(

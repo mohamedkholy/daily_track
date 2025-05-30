@@ -21,7 +21,7 @@ class AddTaskButton extends StatelessWidget {
               }),
         );
       },
-      child: DottedButton("+ Add Task"),
+      child: const DottedButton("+ Add Task"),
     );
   }
 }

@@ -21,7 +21,7 @@ class EditTitleDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var controller = TextEditingController();
+    final controller = TextEditingController();
 
     controller.text = item.title;
 

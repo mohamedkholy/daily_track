@@ -11,7 +11,7 @@ class StreakCard extends StatelessWidget {
     return Card(
       child: Container(
         width: double.infinity,
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,7 +36,7 @@ class StreakCard extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(width: 20),
+            const SizedBox(width: 20),
             Expanded(
               child: SizedBox(
                 child: GridView.count(

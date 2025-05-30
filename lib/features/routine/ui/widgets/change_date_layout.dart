@@ -38,13 +38,13 @@ class _ChangeDateLayoutState extends State<ChangeDateLayout> {
                       ? null
                       : () {
                         setState(() {
-                          date = date.subtract(Duration(days: 1));
+                          date = date.subtract(const Duration(days: 1));
                           context.read<RoutineCubit>().updateTasks(date);
                         });
                       },
-              icon: Icon(Icons.arrow_back),
+              icon: const Icon(Icons.arrow_back),
               padding: EdgeInsets.zero,
-              constraints: BoxConstraints(),
+              constraints: const BoxConstraints(),
             ),
             Text(
               DateFormat("MMMM d, y").format(date),
@@ -56,11 +56,11 @@ class _ChangeDateLayoutState extends State<ChangeDateLayout> {
                       ? null
                       : () {
                         setState(() {
-                          date = date.add(Duration(days: 1));
+                          date = date.add(const Duration(days: 1));
                           context.read<RoutineCubit>().updateTasks(date);
                         });
                       },
-              icon: Icon(Icons.arrow_forward),
+              icon: const Icon(Icons.arrow_forward),
             ),
           ],
         ),
