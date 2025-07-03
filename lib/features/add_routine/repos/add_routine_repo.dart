@@ -28,6 +28,7 @@ class AddRoutineRepo {
       await addProgress(0, routine.startDate, routine.title);
       return true;
     } catch (e) {
+      debugPrint(e.toString());
       return false;
     }
   }

@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
                 bottomNavigationBarTheme: const BottomNavigationBarThemeData(
                   backgroundColor: Colors.white,
                 ),
-                cardTheme: const CardTheme(elevation: 2, color: Colors.white),
+                cardTheme: const CardThemeData(elevation: 2, color: Colors.white),
                 primaryColor: Colors.black,
                 fontFamily: "montserrat_regular",
               ),

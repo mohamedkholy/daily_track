@@ -20,7 +20,7 @@ class AddRoutineCubit extends Cubit<AddRoutineState> {
 
   void addRoutine(Routine routine) async {
     emit(AddingRoutineState());
-    var result = await repo.addRoutine(routine);
+    final result = await repo.addRoutine(routine);
     result?  emit(SuccessAddedRoutineState()) :   emit(AddingRoutineFailedState());
 
   }

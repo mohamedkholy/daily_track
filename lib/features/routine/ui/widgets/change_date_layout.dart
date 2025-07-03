@@ -47,7 +47,14 @@ class _ChangeDateLayoutState extends State<ChangeDateLayout> {
               constraints: const BoxConstraints(),
             ),
             Text(
-              DateFormat("MMMM d, y").format(date),
+              DateUtils.isSameDay(date, DateTime.now())
+                  ? "Today"
+                  : DateUtils.isSameDay(
+                    date,
+                    DateTime.now().subtract(const Duration(days: 1)),
+                  )
+                  ? "Yesterday"
+                  : DateFormat("MMMM d, y").format(date),
               style: TextStyles.font18BlackBold,
             ), //"March 13, 2025"
             IconButton(

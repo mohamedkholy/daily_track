@@ -27,15 +27,18 @@ class AddRoutineScreen extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 10.w),
+            padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const BackButtonWithTitle("Create New Routine"),
-                SizedBox(height: 10.h,),
+                SizedBox(height: 10.h),
                 Card(
                   child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 10.w),
+                    padding: EdgeInsets.symmetric(
+                      vertical: 10.h,
+                      horizontal: 10.w,
+                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -72,15 +75,13 @@ class AddRoutineScreen extends StatelessWidget {
                             } else if (state is SuccessAddedRoutineState) {
                               Navigator.of(context).pop();
                               Navigator.of(context).pop();
-                            }
-                            else if(state is AddingRoutineFailedState){
+                            } else if (state is AddingRoutineFailedState) {
                               Navigator.of(context).pop();
                               floatingSnackBar(
                                 message: "Adding routine failed",
                                 context: context,
                               );
-                            }
-                           else if (state is AddTaskState) {
+                            } else if (state is AddTaskState) {
                               tasks.add(state.task);
                             } else if (state is RemoveTaskState) {
                               tasks.removeWhere((element) {
@@ -125,7 +126,9 @@ class AddRoutineScreen extends StatelessWidget {
                               context.read<AddRoutineCubit>().addRoutine(
                                 Routine(
                                   title: controller.text,
-                                  startDate: DateUtils.dateOnly(DateTime.now()),
+                                  startDate: DateUtils.dateOnly(
+                                    DateTime.now(),
+                                  ),
                                   tasks: tasks,
                                 ),
                               );
